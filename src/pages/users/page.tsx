@@ -67,7 +67,7 @@ export function UserCard({user, refetchUsers}: { user: User, refetchUsers: () =>
         <li className='flex justify-between items-center p-4 mb-2 rounded bg-gray-100 :' key={user.id}>
             <span>{user.email}</span>
             <form action={handleDelete}>
-                <input type="hidden" name="id" value={user.id} />
+                <input type="hidden" name="id" value={user.id}/>
                 <button
                     className='bg-red-500 cursor-pointer hover:bg-red-700 text-white font-medium py-2 px-4 rounded-2xl'
                     disabled={isPending}>Delete

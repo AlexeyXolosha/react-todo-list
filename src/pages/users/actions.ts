@@ -5,6 +5,8 @@ type CreateActionState = {
     error?: string | null;
 };
 
+export const CreateUserAction = (state: CreateActionState, formData: FormData) => Promise<CreateActionState>;
+
 export const createUserAction =
     ({refetchUsers}: {
         refetchUsers: () => void;
@@ -36,7 +38,6 @@ export const createUserAction =
             }
         }
     };
-
 
 type DeleteUserActionState = {
     error?: string;
