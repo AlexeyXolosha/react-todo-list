@@ -42,17 +42,21 @@ type DeleteUserActionState = {
     error?: string;
 }
 
-export const deleteUserAction = ({refetchUsers, id }: {
-    refetchUsers: () => void;
-    id: String;
-}) => async (): Promise<DeleteUserActionState> => {
-    try {
-        await deleteUser(id);
-        refetchUsers();
-        return {};
-    } catch {
-        return {
-            error: "Error while deleting user"
+export function deleteUserAction({refetchUsers}: { refetchUsers: () => void }) {
+    return async (
+        state: DeleteUserActionState,
+        formData: FormData
+    ): Promise<DeleteUserActionState> => {
+        const id = formData.get("id") as string;
+        try {
+            await deleteUser(id);
+            refetchUsers();
+            return {};
+        } catch (e) {
+            return {
+                error: "Error while deleting user",
+            };
         }
     }
 }
+
